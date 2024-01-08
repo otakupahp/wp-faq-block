@@ -1,0 +1,52 @@
+.wp-block-otk-faq-block {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	.otk-faq-item-block {
+
+		.otk-faq-item-header {
+			cursor: pointer;
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			border: thin solid black;
+			margin: 1px;
+			padding: 5px;
+
+			.otk-faq-item-question {
+				margin: 0;
+			}
+
+			.otk-faq-item-icon {
+				$icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSI+PHBhdGggZD0iTTEwLjYgNkw5LjQgN2w0LjYgNS00LjYgNSAxLjIgMSA1LjQtNnoiPjwvcGF0aD48L3N2Zz4=");
+				width: 24px;
+				height: 24px;
+				mask-image: $icon;
+				-webkit-mask-image: $icon;
+				background-color: #000;
+
+				&.opened {
+					$icon: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSI+PHBhdGggZD0iTTE3LjUgMTEuNkwxMiAxNmwtNS41LTQuNC45LTEuMkwxMiAxNGw0LjUtMy42IDEgMS4yeiI+PC9wYXRoPjwvc3ZnPg==");
+					mask-image: $icon;
+					-webkit-mask-image: $icon;
+				}
+			}
+
+		}
+
+		.otk-faq-item-answer {
+			padding: 0 10px;
+			height: 0;
+			overflow: hidden;
+			transition: padding 0.2s ease-out, height 0.2s ease-out;
+			box-sizing: border-box;
+
+			&.opened {
+				padding: 10px;
+			}
+		}
+
+	}
+
+}

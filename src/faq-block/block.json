@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "otk-llc/faq-block",
+	"version": "1.0.0",
+	"title": "FAQ Block",
+	"category": "widgets",
+	"icon": "index-card",
+	"description": "A FAQ block with the Interactivity API",
+	"selectors": {
+		"root": ".wp-block-otk-faq-block"
+	},
+	"supports": {
+		"interactivity": true,
+    "html": false,
+    "align": true
+	},
+  "attributes": {
+    "questionBackgroundColor": {
+      "type": "string"
+    },
+    "questionTextColor": {
+      "type": "string"
+    },
+    "answerBackgroundColor": {
+      "type": "string"
+    },
+    "answerTextColor": {
+      "type": "string"
+    }
+  },
+	"textdomain": "faq-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

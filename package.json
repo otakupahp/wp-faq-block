@@ -1,0 +1,32 @@
+{
+	"name": "faq-block",
+	"version": "0.1.0",
+	"description": "A faq block with the Interactivity API",
+	"author": "OtakuPahp LLC",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"prepare": "npm-run-all format lint",
+		"format": "wp-scripts format",
+		"lint": "run-p lint:*",
+		"lint:css": "wp-scripts lint-style --fix",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"deploy": "npm-run-all prepare build",
+		"pack": "npm-run-all prepare build plugin-zip"
+	},
+	"files": [
+		"src/view.js"
+	],
+	"dependencies": {
+		"@wordpress/icons": "^9.39.0",
+		"@wordpress/interactivity": "^3.1.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^26.19.0",
+		"npm-run-all": "^4.1.5"
+	}
+}

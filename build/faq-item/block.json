@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "otk-llc/faq-item-block",
+  "title": "FAQ item Block",
+  "description": "A block that displays a single FAQ item.",
+  "category": "widgets",
+  "icon": "text-page",
+  "parent": [
+    "otk-llc/faq-block"
+  ],
+  "selectors": {
+    "root": ".otk-faq-item-block"
+  },
+  "attributes": {
+    "question": {
+      "type": "string",
+      "source": "html",
+      "selector": ".otk-faq-item-question"
+    },
+    "answer": {
+      "type": "string",
+      "source": "html",
+      "selector": ".otk-faq-item-answer"
+    }
+  },
+  "editorScript": "file:./index.js"
+}

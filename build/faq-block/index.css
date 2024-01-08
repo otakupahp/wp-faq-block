@@ -1,0 +1,15 @@
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/faq-block/editor.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+.wp-block-otk-faq-block {
+  margin: 0;
+  padding: 0;
+}
+.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header {
+  cursor: default;
+}
+.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header .otk-faq-item-icon {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.css.map*/
