@@ -2,22 +2,25 @@
  * WordPress dependencies
  */
 import { InspectorControls, PanelColorSettings, useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { PanelBody, PanelRow, FontSizePicker } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-/**
- * Allowed blocks
- *
- * @constant
- * @type {string[]}
- */
-const ALLOWED_BLOCKS = [ 'otk-llc/faq-item-block' ];
-
 const Edit = ( { attributes, setAttributes } ) => {
+
+	/**
+	 * Allowed blocks
+	 *
+	 * @constant
+	 * @type {string[]}
+	 */
+	const ALLOWED_BLOCKS = [ 'otk-llc/faq-item-block' ];
+
 	const {
 		questionBackgroundColor,
 		questionTextColor,
-		answerBackgroundColor,
-		answerTextColor
+		questionFontSize,
+		borderColor
 	} = attributes;
 	const blockProps = useBlockProps( {
 		className: 'wp-block-otk-faq-block',
@@ -31,39 +34,48 @@ const Edit = ( { attributes, setAttributes } ) => {
 		],
 		templateLock: false,
 	} );
+
+	// Get fontSizes from the core/block-editor settings
+	const { fontSizes } = useSelect( ( select ) => {
+		return select( 'core/block-editor' ).getSettings();
+	}, [] );
+	const fontSizeFallback = 16;
+
 	return (
 		<>
 			<InspectorControls>
-				<PanelColorSettings
-					title={ __( 'Question Settings' ) }
-					colorSettings={ [
-						{
-							value: questionBackgroundColor,
-							onChange: ( color ) => setAttributes( { questionBackgroundColor: color } ),
-							label: __( 'Background Color' ),
-						},
-						{
-							value: questionTextColor,
-							onChange: ( color ) => setAttributes( { questionTextColor: color } ),
-							label: __( 'Text Color' ),
-						},
-					] }
-				/>
-				<PanelColorSettings
-					title={ __( 'Answer Settings' ) }
-					colorSettings={ [
-						{
-							value: answerBackgroundColor,
-							onChange: ( color ) => setAttributes( { answerBackgroundColor: color } ),
-							label: __( 'Background Color' ),
-						},
-						{
-							value: answerTextColor,
-							onChange: ( color ) => setAttributes( { answerTextColor: color } ),
-							label: __( 'Text Color' ),
-						},
-					] }
-				/>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						colorSettings={ [
+							{
+								value: questionBackgroundColor,
+								onChange: ( color ) => setAttributes( { questionBackgroundColor: color } ),
+								label: __( 'Question Background Color' ),
+							},
+							{
+								value: questionTextColor,
+								onChange: ( color ) => setAttributes( { questionTextColor: color } ),
+								label: __( 'Question Text Color' ),
+							},
+							{
+								value: borderColor,
+								onChange: ( color ) => setAttributes( { borderColor: color } ),
+								label: __( 'Border Color' ),
+							},
+						] }
+					/>
+					<PanelBody
+						title={ __( 'Fonts Settings' ) }
+						opened={ true }
+					>
+						<FontSizePicker
+							fontSizes={ fontSizes }
+							fallbackFontSize={ fontSizeFallback }
+							value={ questionFontSize }
+							onChange={ ( size ) => setAttributes( { questionFontSize: size } ) }
+							withSlider
+						/>
+					</PanelBody>
 			</InspectorControls>
 			<ul { ...innerBlocksProps } />
 		</>

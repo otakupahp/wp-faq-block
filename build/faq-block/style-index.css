@@ -5,14 +5,17 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  border-width: thin;
+  border-style: solid;
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header {
   cursor: pointer;
   display: flex;
   gap: 10px;
   align-items: center;
-  border: thin solid black;
-  margin: 1px;
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  margin: 0;
   padding: 5px;
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header .otk-faq-item-question {
@@ -25,7 +28,7 @@
   -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSI+PHBhdGggZD0iTTEwLjYgNkw5LjQgN2w0LjYgNS00LjYgNSAxLjIgMSA1LjQtNnoiPjwvcGF0aD48L3N2Zz4=);
   background-color: #000;
 }
-.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header .otk-faq-item-icon.opened {
+.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header.opened .otk-faq-item-icon {
   mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSI+PHBhdGggZD0iTTE3LjUgMTEuNkwxMiAxNmwtNS41LTQuNC45LTEuMkwxMiAxNGw0LjUtMy42IDEgMS4yeiI+PC9wYXRoPjwvc3ZnPg==);
   -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSI+PHBhdGggZD0iTTE3LjUgMTEuNkwxMiAxNmwtNS41LTQuNC45LTEuMkwxMiAxNGw0LjUtMy42IDEgMS4yeiI+PC9wYXRoPjwvc3ZnPg==);
 }
@@ -38,6 +41,9 @@
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-answer.opened {
   padding: 10px;
+}
+.wp-block-otk-faq-block .otk-faq-item-block:last-of-type .otk-faq-item-header:not(.opened) {
+  border-bottom-width: 0 !important;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

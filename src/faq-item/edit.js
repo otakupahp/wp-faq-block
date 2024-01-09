@@ -1,41 +1,40 @@
 /**
  * WordPress dependencies
  */
-import { RichText } from '@wordpress/block-editor';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element'
 
 const Edit = ( { attributes, setAttributes } ) => {
 
 	// Create a state to toggle the visibility of the answer.
 	const [ isOpen, setIsOpen ] = useState( false );
+	const ALLOWED_BLOCKS = [ 'core/image', 'core/paragraph' ];
 
 	return (
-		<li className="otk-faq-item-block">
+		<li className="otk-faq-item-block" >
 			<div
-				className="otk-faq-item-header"
-				onClick={ () => setIsOpen( ! isOpen ) }
+				className={`otk-faq-item-header ${isOpen ? 'opened' : ''}`}
+				onClick={() => setIsOpen(!isOpen)}
 			>
-				<i className={`otk-faq-item-icon ${isOpen ? 'opened' : ''}`}/>
+				<i className="otk-faq-item-icon"/>
 				<RichText
 					tagName="h3"
 					className="otk-faq-item-question"
 					placeholder="Question"
-					onChange={ ( question ) => setAttributes( { question } ) }
-					value={ attributes.question }
+					onChange={(question) => setAttributes({ question })}
+					value={attributes.question}
 				/>
 			</div>
 			{
 				isOpen &&
-				<RichText
-					tagName="div"
-					className="otk-faq-item-answer"
-					placeholder="Answer"
-					onChange={ ( answer ) => setAttributes( { answer } ) }
-					value={ attributes.answer }
-				/>
+				<div className="otk-faq-item-answer">
+					<InnerBlocks
+						allowedBlocks={ALLOWED_BLOCKS}
+					/>
+				</div>
 			}
 		</li>
-	);
+);
 }
 
 export default Edit;

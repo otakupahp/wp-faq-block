@@ -22,10 +22,10 @@
     "questionTextColor": {
       "type": "string"
     },
-    "answerBackgroundColor": {
+    "questionFontSize": {
       "type": "string"
     },
-    "answerTextColor": {
+    "borderColor": {
       "type": "string"
     }
   },

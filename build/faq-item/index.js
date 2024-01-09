@@ -30,13 +30,14 @@ const Edit = ({
 }) => {
   // Create a state to toggle the visibility of the answer.
   const [isOpen, setIsOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const ALLOWED_BLOCKS = ['core/image', 'core/paragraph'];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     className: "otk-faq-item-block"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "otk-faq-item-header",
+    className: `otk-faq-item-header ${isOpen ? 'opened' : ''}`,
     onClick: () => setIsOpen(!isOpen)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `otk-faq-item-icon ${isOpen ? 'opened' : ''}`
+    className: "otk-faq-item-icon"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h3",
     className: "otk-faq-item-question",
@@ -45,15 +46,11 @@ const Edit = ({
       question
     }),
     value: attributes.question
-  })), isOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "div",
-    className: "otk-faq-item-answer",
-    placeholder: "Answer",
-    onChange: answer => setAttributes({
-      answer
-    }),
-    value: attributes.answer
-  }));
+  })), isOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "otk-faq-item-answer"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+    allowedBlocks: ALLOWED_BLOCKS
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -91,11 +88,9 @@ const Save = ({
     tagName: "h3",
     className: "otk-faq-item-question",
     value: attributes.question
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "div",
-    className: "otk-faq-item-answer",
-    value: attributes.answer
-  }));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "otk-faq-item-answer"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 
@@ -147,7 +142,7 @@ module.exports = window["wp"]["element"];
   \*********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-item-block","title":"FAQ item Block","description":"A block that displays a single FAQ item.","category":"widgets","icon":"text-page","parent":["otk-llc/faq-block"],"selectors":{"root":".otk-faq-item-block"},"attributes":{"question":{"type":"string","source":"html","selector":".otk-faq-item-question"},"answer":{"type":"string","source":"html","selector":".otk-faq-item-answer"}},"editorScript":"file:./index.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-item-block","title":"FAQ item Block","description":"A block that displays a single FAQ item.","category":"widgets","icon":"text-page","parent":["otk-llc/faq-block"],"selectors":{"root":".otk-faq-item-block"},"attributes":{"question":{"type":"string","source":"html","selector":".otk-faq-item-question"}},"editorScript":"file:./index.js"}');
 
 /***/ })
 

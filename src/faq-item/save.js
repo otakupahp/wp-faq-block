@@ -1,7 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { RichText } from '@wordpress/block-editor';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
+
 const Save = ( { attributes } ) => {
 	return (
 		<li className="otk-faq-item-block">
@@ -13,13 +14,11 @@ const Save = ( { attributes } ) => {
 					value={attributes.question}
 				/>
 			</div>
-			<RichText.Content
-				tagName="div"
-				className="otk-faq-item-answer"
-				value={attributes.answer}
-			/>
+			<div className="otk-faq-item-answer">
+				<InnerBlocks.Content/>
+			</div>
 		</li>
-	);
+);
 }
 
 export default Save;

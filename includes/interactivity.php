@@ -43,11 +43,17 @@ while ($content_processor->next_tag($query_item)) {
         '{"isOpen":false,"contentHeight":0}'
     );
 
-    // Add context to the block item.
+    // Add a unique key to the block item.
     $content_processor->set_attribute(
         'data-wp-key',
         'item-' . $unique_id
     );
+
+	// Set border color.
+	$content_processor->set_attribute(
+		'data-wp-style--border-color',
+		'context.borderColor'
+	);
 
     // Get the header element.
     $query_header = array(
@@ -79,18 +85,18 @@ while ($content_processor->next_tag($query_item)) {
             'context.questionBackgroundColor'
         );
 
+	    // Set the open conditional class.
+	    $content_processor->set_attribute(
+		    'data-wp-class--opened',
+		    'context.isOpen'
+	    );
+
         // Get the icon element.
         $query_icon = array(
             'tag_name' => 'I',
             'class_name' => 'otk-faq-item-icon'
         );
         if ($content_processor->next_tag($query_icon)) {
-
-            // Set the open conditional class.
-            $content_processor->set_attribute(
-                'data-wp-class--opened',
-                'context.isOpen'
-            );
 
             // Set text color.
             $content_processor->set_attribute(
@@ -105,11 +111,18 @@ while ($content_processor->next_tag($query_item)) {
             'class_name' => 'otk-faq-item-question'
         );
         if ($content_processor->next_tag($query_question)) {
+
             // Set text color.
             $content_processor->set_attribute(
                 'data-wp-style--color',
                 'context.questionTextColor'
             );
+
+	        // Set text size.
+	        $content_processor->set_attribute(
+		        'data-wp-style--font-size',
+		        'context.questionFontSize'
+	        );
         }
     }
 
@@ -123,18 +136,6 @@ while ($content_processor->next_tag($query_item)) {
         $content_processor->set_attribute(
             'id',
             'answer-' . $unique_id
-        );
-
-        // Set background color.
-        $content_processor->set_attribute(
-            'data-wp-style--background-color',
-            'context.answerBackgroundColor'
-        );
-
-        // Set text color.
-        $content_processor->set_attribute(
-            'data-wp-style--color',
-            'context.answerTextColor'
         );
 
 	    // Set the open conditional class.

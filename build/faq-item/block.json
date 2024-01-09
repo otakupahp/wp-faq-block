@@ -17,11 +17,6 @@
       "type": "string",
       "source": "html",
       "selector": ".otk-faq-item-question"
-    },
-    "answer": {
-      "type": "string",
-      "source": "html",
-      "selector": ".otk-faq-item-answer"
     }
   },
   "editorScript": "file:./index.js"

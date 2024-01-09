@@ -7,9 +7,14 @@
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header {
   cursor: default;
+  margin: 1px;
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header .otk-faq-item-icon {
   cursor: pointer;
+}
+.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-answer {
+  padding: 10px;
+  height: auto;
 }
 
 /*# sourceMappingURL=index.css.map*/
