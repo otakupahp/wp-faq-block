@@ -10,6 +10,11 @@
 $global_context = $attributes;
 unset($global_context['align']);
 
+// Add units to the border width.
+if (isset($global_context['borderWidth'])) {
+	$global_context['borderWidth'] .= 'px';
+}
+
 // Use the WP_HTML_Tag_Processor to process the content.
 $content_processor = new WP_HTML_Tag_Processor($content);
 
@@ -21,11 +26,27 @@ $query_faq_block = array(
 
 // Add the store the wrapper.
 if ($content_processor->next_tag($query_faq_block)) {
+
+	// Set the interactive namespace.
     $content_processor->set_attribute('data-wp-interactive', '{"namespace":"otk-faq-block"}');
+
+	// Set the global context.
     $content_processor->set_attribute(
         'data-wp-context',
         wp_json_encode($global_context)
     );
+
+	// Set border color.
+	$content_processor->set_attribute(
+		'data-wp-style--border-color',
+		'context.borderColor'
+	);
+
+	// Set border width.
+	$content_processor->set_attribute(
+		'data-wp-style--border-width',
+		'context.borderWidth'
+	);
 }
 
 // Query the content for the block item and add interactivity
@@ -48,12 +69,6 @@ while ($content_processor->next_tag($query_item)) {
         'data-wp-key',
         'item-' . $unique_id
     );
-
-	// Set border color.
-	$content_processor->set_attribute(
-		'data-wp-style--border-color',
-		'context.borderColor'
-	);
 
     // Get the header element.
     $query_header = array(
@@ -132,11 +147,24 @@ while ($content_processor->next_tag($query_item)) {
         'class_name' => 'otk-faq-item-answer'
     );
     if ($content_processor->next_tag($query_content)) {
+
         // Set item id.
         $content_processor->set_attribute(
             'id',
             'answer-' . $unique_id
         );
+
+	    // Set border color.
+	    $content_processor->set_attribute(
+		    'data-wp-style--border-color',
+		    'context.borderColor'
+	    );
+
+	    // Set border width.
+	    $content_processor->set_attribute(
+		    'data-wp-style--border-width',
+		    'context.borderWidth'
+	    );
 
 	    // Set the open conditional class.
 	    $content_processor->set_attribute(

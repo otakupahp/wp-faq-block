@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: FAQ Block
- * Description: A faq block with the Interactivity API
+ * Plugin Name: WP Interactivity FAQ Block
+ * Description: A FAQ block with the Interactivity API
  * Version: 1.0.0
  * Requires at least: 6.4.0
  * Requires PHP: 8.1
  * Author: OtakuPahp LLC
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: faq-block
+ * Text Domain: wp-faq-block
  *
- * @package create-block
+ * @package wp-faq-block
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

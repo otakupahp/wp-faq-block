@@ -41,12 +41,18 @@ const Edit = ({
    * @type {string[]}
    */
   const ALLOWED_BLOCKS = ['otk-llc/faq-item-block'];
+
+  // Get the values from the attributes.
   const {
     questionBackgroundColor,
     questionTextColor,
     questionFontSize,
-    borderColor
+    borderColor,
+    borderWidth
   } = attributes;
+  const borderWidthPX = borderWidth + 'px';
+
+  // Get the block props.
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     className: 'wp-block-otk-faq-block'
   });
@@ -62,7 +68,6 @@ const Edit = ({
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
     return select('core/block-editor').getSettings();
   }, []);
-  const fontSizeFallback = 16;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Color Settings'),
     colorSettings: [{
@@ -85,17 +90,30 @@ const Edit = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border Color')
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Fonts Settings'),
-    opened: true
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Border Width')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    value: borderWidth,
+    initialPosition: borderWidth,
+    onChange: width => setAttributes({
+      borderWidth: width
+    }),
+    min: 0,
+    max: 10,
+    allowReset: true
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Font Size')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
     fontSizes: fontSizes,
-    fallbackFontSize: fontSizeFallback,
     value: questionFontSize,
     onChange: size => setAttributes({
       questionFontSize: size
     }),
     withSlider: true
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    style: {
+      borderColor: borderColor,
+      borderWidth: borderWidthPX
+    },
     ...innerBlocksProps
   }));
 };
@@ -258,7 +276,7 @@ module.exports = window["wp"]["i18n"];
   \**********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-block","version":"1.0.0","title":"FAQ Block","category":"widgets","icon":"index-card","description":"A FAQ block with the Interactivity API","selectors":{"root":".wp-block-otk-faq-block"},"supports":{"interactivity":true,"html":false,"align":true},"attributes":{"questionBackgroundColor":{"type":"string"},"questionTextColor":{"type":"string"},"questionFontSize":{"type":"string"},"borderColor":{"type":"string"}},"textdomain":"faq-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-block","version":"1.0.0","title":"FAQ Block","category":"widgets","icon":"index-card","description":"A FAQ block with the Interactivity API","selectors":{"root":".wp-block-otk-faq-block"},"supports":{"interactivity":true,"html":false,"align":true},"attributes":{"questionBackgroundColor":{"type":"string"},"questionTextColor":{"type":"string"},"questionFontSize":{"type":"string"},"borderColor":{"type":"string"},"borderWidth":{"type":"number","default":"1"}},"providesContext":{"otkQuestionBackgroundColor":"questionBackgroundColor","otkQuestionTextColor":"questionTextColor","otkQuestionFontSize":"questionFontSize","otkBorderColor":"borderColor","otkBorderWidth":"borderWidth"},"textdomain":"wp-faq-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ })
 
@@ -413,7 +431,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkfaq_block"] = globalThis["webpackChunkfaq_block"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkwp_faq_block"] = globalThis["webpackChunkwp_faq_block"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

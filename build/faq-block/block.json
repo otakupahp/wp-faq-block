@@ -27,9 +27,20 @@
     },
     "borderColor": {
       "type": "string"
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": "1"
     }
   },
-  "textdomain": "faq-block",
+  "providesContext": {
+    "otkQuestionBackgroundColor": "questionBackgroundColor",
+    "otkQuestionTextColor": "questionTextColor",
+    "otkQuestionFontSize": "questionFontSize",
+    "otkBorderColor": "borderColor",
+    "otkBorderWidth": "borderWidth"
+  },
+  "textdomain": "wp-faq-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

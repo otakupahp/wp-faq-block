@@ -5,16 +5,13 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border-width: thin;
-  border-style: solid;
+  border-bottom-width: 0 !important;
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-header {
   cursor: pointer;
   display: flex;
   gap: 10px;
   align-items: center;
-  border-bottom-width: thin;
-  border-bottom-style: solid;
   margin: 0;
   padding: 5px;
 }
@@ -38,11 +35,13 @@
   overflow: hidden;
   transition: padding 0.2s ease-out, height 0.2s ease-out;
   box-sizing: border-box;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
 }
 .wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-answer.opened {
   padding: 10px;
 }
-.wp-block-otk-faq-block .otk-faq-item-block:last-of-type .otk-faq-item-header:not(.opened) {
+.wp-block-otk-faq-block .otk-faq-item-block .otk-faq-item-answer:not(.opened) {
   border-bottom-width: 0 !important;
 }
 

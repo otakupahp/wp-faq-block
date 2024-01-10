@@ -1,4 +1,4 @@
-# FAQ Block
+# WP Interactivity FAQ Block
 
 > **Warning**
 > **This block requires Gutenberg 16.2 or superior to work**. The Interactivity API is, at the moment, not part of WordPress Core as it is still very experimental, and very likely to change. 

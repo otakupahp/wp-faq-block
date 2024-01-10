@@ -26,30 +26,59 @@ __webpack_require__.r(__webpack_exports__);
 
 const Edit = ({
   attributes,
-  setAttributes
+  setAttributes,
+  context
 }) => {
   // Create a state to toggle the visibility of the answer.
   const [isOpen, setIsOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
   const ALLOWED_BLOCKS = ['core/image', 'core/paragraph'];
+
+  // Get context values.
+  const {
+    otkQuestionBackgroundColor,
+    otkQuestionTextColor,
+    otkQuestionFontSize,
+    otkBorderColor,
+    otkBorderWidth
+  } = context;
+  const borderWidth = otkBorderWidth + 'px';
+
+  // Item template.
+  const TEMPLATE = [['core/paragraph']];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     className: "otk-faq-item-block"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `otk-faq-item-header ${isOpen ? 'opened' : ''}`,
+    style: {
+      backgroundColor: otkQuestionBackgroundColor
+    },
     onClick: () => setIsOpen(!isOpen)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    style: {
+      backgroundColor: otkQuestionTextColor
+    },
     className: "otk-faq-item-icon"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h3",
     className: "otk-faq-item-question",
+    style: {
+      color: otkQuestionTextColor,
+      fontSize: otkQuestionFontSize
+    },
     placeholder: "Question",
     onChange: question => setAttributes({
       question
     }),
     value: attributes.question
   })), isOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      borderColor: otkBorderColor,
+      borderWidth: borderWidth
+    },
     className: "otk-faq-item-answer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ALLOWED_BLOCKS
+    allowedBlocks: ALLOWED_BLOCKS,
+    template: TEMPLATE
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -142,7 +171,7 @@ module.exports = window["wp"]["element"];
   \*********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-item-block","title":"FAQ item Block","description":"A block that displays a single FAQ item.","category":"widgets","icon":"text-page","parent":["otk-llc/faq-block"],"selectors":{"root":".otk-faq-item-block"},"attributes":{"question":{"type":"string","source":"html","selector":".otk-faq-item-question"}},"editorScript":"file:./index.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"otk-llc/faq-item-block","title":"FAQ item Block","description":"A block that displays a single FAQ item.","category":"widgets","icon":"text-page","parent":["otk-llc/faq-block"],"selectors":{"root":".otk-faq-item-block"},"attributes":{"question":{"type":"string","source":"html","selector":".otk-faq-item-question"}},"usesContext":["otkQuestionBackgroundColor","otkQuestionTextColor","otkQuestionFontSize","otkBorderColor","otkBorderWidth"],"editorScript":"file:./index.js"}');
 
 /***/ })
 

@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { InspectorControls, PanelColorSettings, useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, FontSizePicker } from '@wordpress/components';
+import { PanelBody, FontSizePicker, RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -16,12 +16,17 @@ const Edit = ( { attributes, setAttributes } ) => {
 	 */
 	const ALLOWED_BLOCKS = [ 'otk-llc/faq-item-block' ];
 
+	// Get the values from the attributes.
 	const {
 		questionBackgroundColor,
 		questionTextColor,
 		questionFontSize,
-		borderColor
+		borderColor,
+		borderWidth
 	} = attributes;
+	const borderWidthPX = borderWidth + 'px';
+
+	// Get the block props.
 	const blockProps = useBlockProps( {
 		className: 'wp-block-otk-faq-block',
 	} );
@@ -39,45 +44,53 @@ const Edit = ( { attributes, setAttributes } ) => {
 	const { fontSizes } = useSelect( ( select ) => {
 		return select( 'core/block-editor' ).getSettings();
 	}, [] );
-	const fontSizeFallback = 16;
 
 	return (
 		<>
 			<InspectorControls>
-					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
-						colorSettings={ [
-							{
-								value: questionBackgroundColor,
-								onChange: ( color ) => setAttributes( { questionBackgroundColor: color } ),
-								label: __( 'Question Background Color' ),
-							},
-							{
-								value: questionTextColor,
-								onChange: ( color ) => setAttributes( { questionTextColor: color } ),
-								label: __( 'Question Text Color' ),
-							},
-							{
-								value: borderColor,
-								onChange: ( color ) => setAttributes( { borderColor: color } ),
-								label: __( 'Border Color' ),
-							},
-						] }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
+					colorSettings={ [
+						{
+							value: questionBackgroundColor,
+							onChange: ( color ) => setAttributes( { questionBackgroundColor: color } ),
+							label: __( 'Question Background Color' ),
+						},
+						{
+							value: questionTextColor,
+							onChange: ( color ) => setAttributes( { questionTextColor: color } ),
+							label: __( 'Question Text Color' ),
+						},
+						{
+							value: borderColor,
+							onChange: ( color ) => setAttributes( { borderColor: color } ),
+							label: __( 'Border Color' ),
+						},
+					] }
+				/>
+				<PanelBody title={ __( 'Border Width' ) }>
+					<RangeControl
+						value={ borderWidth }
+						initialPosition={ borderWidth }
+						onChange={ ( width ) => setAttributes( { borderWidth: width } ) }
+						min={ 0 }
+						max={ 10 }
+						allowReset
 					/>
-					<PanelBody
-						title={ __( 'Fonts Settings' ) }
-						opened={ true }
-					>
-						<FontSizePicker
-							fontSizes={ fontSizes }
-							fallbackFontSize={ fontSizeFallback }
-							value={ questionFontSize }
-							onChange={ ( size ) => setAttributes( { questionFontSize: size } ) }
-							withSlider
-						/>
-					</PanelBody>
+				</PanelBody>
+				<PanelBody title={ __( 'Font Size' ) }>
+					<FontSizePicker
+						fontSizes={ fontSizes }
+						value={ questionFontSize }
+						onChange={ ( size ) => setAttributes( { questionFontSize: size } ) }
+						withSlider
+					/>
+				</PanelBody>
 			</InspectorControls>
-			<ul { ...innerBlocksProps } />
+			<ul
+				style={{ borderColor: borderColor, borderWidth: borderWidthPX }}
+				{ ...innerBlocksProps }
+			/>
 		</>
 	);
 }

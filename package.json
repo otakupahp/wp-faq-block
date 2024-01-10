@@ -1,6 +1,6 @@
 {
-	"name": "faq-block",
-	"version": "0.1.0",
+	"name": "wp-faq-block",
+	"version": "1.0.0",
 	"description": "A faq block with the Interactivity API",
 	"author": "OtakuPahp LLC",
 	"license": "GPL-2.0-or-later",
