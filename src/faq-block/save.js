@@ -13,6 +13,6 @@ const Save = () => {
 			<InnerBlocks.Content />
 		</ul>
 	);
-}
+};
 
 export default Save;

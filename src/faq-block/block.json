@@ -12,37 +12,37 @@
 	},
 	"supports": {
 		"interactivity": true,
-    "html": false,
-    "align": true
+		"html": false,
+		"align": true
 	},
-  "attributes": {
-    "questionBackgroundColor": {
-      "type": "string"
-    },
-    "questionTextColor": {
-      "type": "string"
-    },
-    "questionFontSize": {
-      "type": "string"
-    },
-    "borderColor": {
-      "type": "string"
-    },
-    "borderWidth": {
-      "type": "number",
-      "default": "1"
-    }
-  },
-  "providesContext": {
-    "otkQuestionBackgroundColor": "questionBackgroundColor",
-    "otkQuestionTextColor": "questionTextColor",
-    "otkQuestionFontSize": "questionFontSize",
-    "otkBorderColor": "borderColor",
-    "otkBorderWidth": "borderWidth"
-  },
+	"attributes": {
+		"questionBackgroundColor": {
+			"type": "string"
+		},
+		"questionTextColor": {
+			"type": "string"
+		},
+		"questionFontSize": {
+			"type": "string"
+		},
+		"borderColor": {
+			"type": "string"
+		},
+		"borderWidth": {
+			"type": "number",
+			"default": "1"
+		}
+	},
+	"providesContext": {
+		"otkQuestionBackgroundColor": "questionBackgroundColor",
+		"otkQuestionTextColor": "questionTextColor",
+		"otkQuestionFontSize": "questionFontSize",
+		"otkBorderColor": "borderColor",
+		"otkBorderWidth": "borderWidth"
+	},
 	"textdomain": "wp-faq-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-  "render": "file:./render.php"
+	"render": "file:./render.php"
 }

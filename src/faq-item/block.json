@@ -17,12 +17,12 @@
 			"selector": ".otk-faq-item-question"
 		}
 	},
-  "usesContext": [
-    "otkQuestionBackgroundColor",
-    "otkQuestionTextColor",
-    "otkQuestionFontSize",
-    "otkBorderColor",
-    "otkBorderWidth"
-  ],
+	"usesContext": [
+		"otkQuestionBackgroundColor",
+		"otkQuestionTextColor",
+		"otkQuestionFontSize",
+		"otkBorderColor",
+		"otkBorderWidth"
+	],
 	"editorScript": "file:./index.js"
 }

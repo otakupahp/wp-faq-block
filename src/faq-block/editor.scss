@@ -6,7 +6,6 @@
 
 		.otk-faq-item-header {
 			cursor: default;
-			margin: 1px;
 
 			.otk-faq-item-icon {
 				cursor: pointer;
@@ -14,8 +13,8 @@
 		}
 
 		.otk-faq-item-answer {
-			padding: 10px;
 			height: auto;
+			border-top: 0 !important;
 		}
 
 	}

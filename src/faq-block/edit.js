@@ -1,13 +1,17 @@
 /**
  * WordPress dependencies
  */
-import { InspectorControls, PanelColorSettings, useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	PanelColorSettings,
+	useBlockProps,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
 import { PanelBody, FontSizePicker, RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 const Edit = ( { attributes, setAttributes } ) => {
-
 	/**
 	 * Allowed blocks
 	 *
@@ -22,13 +26,15 @@ const Edit = ( { attributes, setAttributes } ) => {
 		questionTextColor,
 		questionFontSize,
 		borderColor,
-		borderWidth
+		borderWidth,
 	} = attributes;
 	const borderWidthPX = borderWidth + 'px';
+	const borderWidthNumber = Number( borderWidth ) || 0;
 
 	// Get the block props.
 	const blockProps = useBlockProps( {
 		className: 'wp-block-otk-faq-block',
+		style: { border: `${ borderWidthPX } solid ${ borderColor }` },
 	} );
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
@@ -53,26 +59,32 @@ const Edit = ( { attributes, setAttributes } ) => {
 					colorSettings={ [
 						{
 							value: questionBackgroundColor,
-							onChange: ( color ) => setAttributes( { questionBackgroundColor: color } ),
+							onChange: ( color ) =>
+								setAttributes( {
+									questionBackgroundColor: color,
+								} ),
 							label: __( 'Question Background Color' ),
 						},
 						{
 							value: questionTextColor,
-							onChange: ( color ) => setAttributes( { questionTextColor: color } ),
+							onChange: ( color ) =>
+								setAttributes( { questionTextColor: color } ),
 							label: __( 'Question Text Color' ),
 						},
 						{
 							value: borderColor,
-							onChange: ( color ) => setAttributes( { borderColor: color } ),
+							onChange: ( color ) =>
+								setAttributes( { borderColor: color } ),
 							label: __( 'Border Color' ),
 						},
 					] }
 				/>
 				<PanelBody title={ __( 'Border Width' ) }>
 					<RangeControl
-						value={ borderWidth }
-						initialPosition={ borderWidth }
-						onChange={ ( width ) => setAttributes( { borderWidth: width } ) }
+						value={ borderWidthNumber }
+						onChange={ ( width ) =>
+							setAttributes( { borderWidth: width } )
+						}
 						min={ 0 }
 						max={ 10 }
 						allowReset
@@ -82,17 +94,16 @@ const Edit = ( { attributes, setAttributes } ) => {
 					<FontSizePicker
 						fontSizes={ fontSizes }
 						value={ questionFontSize }
-						onChange={ ( size ) => setAttributes( { questionFontSize: size } ) }
+						onChange={ ( size ) =>
+							setAttributes( { questionFontSize: size } )
+						}
 						withSlider
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<ul
-				style={{ borderColor: borderColor, borderWidth: borderWidthPX }}
-				{ ...innerBlocksProps }
-			/>
+			<ul { ...innerBlocksProps } />
 		</>
 	);
-}
+};
 
 export default Edit;

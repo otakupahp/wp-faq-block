@@ -6,7 +6,6 @@ import { store, getContext, getElement } from '@wordpress/interactivity';
 store( 'otk-faq-block', {
 	actions: {
 		toggle: () => {
-
 			// Get the block-content object and it's scroll height
 			const { ref } = getElement();
 			const blockContent = ref.nextElementSibling;
